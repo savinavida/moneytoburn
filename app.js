@@ -3,10 +3,11 @@
 
   const form = document.querySelector("#budget-form");
   const categories = [
-     { key: "stay", label: "Крыша над головой", technical: "Проживание", color: "#2d7560" },
-     { key: "food", label: "Пища жизни и кофеёк", technical: "Питание", color: "#d7a52d" },
-     { key: "fun", label: "Вау и тыц-тыц", technical: "Развлечения и экскурсии", color: "#6f75bb" },
-     { key: "other", label: "Мелочи, без которых, ну, никак", technical: "Прочее", color: "#a99b82" }
+    { key: "transport", label: "Самолёты, ноги, поезда", technical: "Транспорт", color: "#f36d3d" },
+    { key: "stay", label: "Крыша над головой", technical: "Проживание", color: "#2d7560" },
+    { key: "food", label: "Пища жизни и кофеёк", technical: "Питание", color: "#d7a52d" },
+    { key: "fun", label: "Вау и тыц-тыц", technical: "Развлечения и экскурсии", color: "#6f75bb" },
+    { key: "other", label: "Мелочи, без которых, ну, никак", technical: "Прочее", color: "#a99b82" }
   ];
   const state = Object.fromEntries(categories.map(({ key }) => [key, { mode: "quick", quick: "", items: [] }]));
   let lastCalculation = null;
