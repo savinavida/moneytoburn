@@ -316,8 +316,7 @@
     state[key].items = state[key].items.filter(item => item.id !== row.dataset.itemId);
     renderCategory(key); calculate();
   });
-
-  $("#calculate-button").addEventListener("click", calculate);
+  
   $("#reset-button").addEventListener("click", resetAll);
   $("#pdf-button").addEventListener("click", exportPDF);
   $("#png-button").addEventListener("click", exportPNG);
