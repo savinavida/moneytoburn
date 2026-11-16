@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4efe5">
+  <meta name="description" content="Деньги на ветер — игровой калькулятор бюджета путешествий.">
+  <title>Деньги на ветер — калькулятор приключений</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Деньги на ветер — главная">
+        <span class="brand-mark" aria-hidden="true">↗</span><span>деньги <i>на ветер</i></span>
+      </a>
+      <div class="top-actions"><span class="top-note"><span class="status-dot"></span> Калькулятор приключений</span>
+        <button class="reset-btn" id="reset-button" type="button">↺ Начать заново</button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="intro">
+        <div class="intro-copy">
+          <p class="eyebrow">ПЛАНИРУЙ. ПУТЕШЕСТВУЙ. НЕ ПАНИКУЙ.</p>
+          <h1>Деньги<br><span>на ветер</span><sup>✳</sup></h1>
+          <p class="tagline"><span>Прикинь заранее, что и почём в твоём приключении!</span><em>Ведь только тогда будет так красиво и не больно.</em></p>
+        </div>
+        <div class="travel-doodle" aria-hidden="true"><div class="sun"></div><div class="route route-one"></div><div class="route route-two"></div><div class="plane">✈</div><div class="stamp">GO<br>WILD</div><span class="doodle-caption">куда глаза<br>глядят →</span></div>
+      </section>
+
+      <section class="workspace" aria-label="Калькулятор бюджета">
+        <div id="budget-form">
+          <div class="section-heading"><div><p class="eyebrow">01 / ВВОДНЫЕ ДАННЫЕ</p><h2>Собираем чемодан цифр</h2></div><span class="step-pill">ТВОЯ ПОЕЗДКА</span></div>
+          <label class="trip-name-field"><span>Как назовём приключение? <small>необязательно</small></span><input id="trip-name" type="text" maxlength="80" placeholder="Например, Большой побег в Рим"></label>
+          <div class="trip-grid">
+            <label class="field"><span class="field-label">Путешественников</span><span class="input-wrap"><input name="people" id="people" type="number" min="1" max="10000" step="1" value="2" required><span class="unit">чел.</span></span><small class="field-error" data-error="people"></small></label>
+            <label class="field"><span class="field-label">Дней в пути</span><span class="input-wrap"><input name="days" id="days" type="number" min="1" max="3650" step="1" value="7" required><span class="unit">дней</span></span><small class="field-error" data-error="days"></small></label>
+            <label class="field"><span class="field-label">Ночей</span><span class="input-wrap"><input name="nights" id="nights" type="number" min="0" max="3650" step="1" value="6"><span class="unit">ночей</span></span><small class="field-error" data-error="nights"></small></label>
+          </div>
+
+          <div class="section-heading costs-heading"><div><p class="eyebrow">02 / ДЕНЬГИ-ДЕНЬЖАТА</p><h2>На что улетит бюджет?</h2><p class="section-hint">Все суммы — за всю поездку и всю компанию. Выбирай удобный способ учёта.</p></div><span class="currency-tag">ВСЁ В EUR €</span></div>
+          <div class="cost-grid" id="cost-grid">
+            <section class="cost-card" data-category="transport" style="--cat:#f36d3d">
+              <div class="category-head"><span class="cost-icon">✈</span><div class="cost-copy"><strong>Самолёты, ноги, поезда</strong><small>Транспорт</small></div><b class="category-total" data-total="transport">0,00 €</b></div>
+              <div class="mode-switch" role="group" aria-label="Способ ввода расходов на транспорт"><button type="button" class="mode-btn active" data-mode="quick">Быстро</button><button type="button" class="mode-btn" data-mode="detail">По пунктам</button></div><p class="mode-status" aria-live="polite"></p>
+              <div class="quick-entry"><label>Общая сумма <span class="money-input"><input type="number" min="0" step="0.01" inputmode="decimal" data-quick="transport" placeholder="0,00"><b>€</b></span></label></div>
+              <div class="detail-entry" hidden><div class="item-list" data-list="transport"></div><form class="add-item-form" data-add="transport"><input type="text" maxlength="180" placeholder="Например, Самолёт" aria-label="Название расхода"><input type="number" step="0.01" inputmode="decimal" placeholder="Сумма €" aria-label="Сумма расхода"><button type="submit" aria-label="Добавить расход">+</button></form><p class="detail-total">Итого по пунктам: <strong data-detail-total="transport">0,00 €</strong></p></div>
+            </section>
+            <section class="cost-card" data-category="stay" style="--cat:#2d7560">
+              <div class="category-head"><span class="cost-icon">⌂</span><div class="cost-copy"><strong>Где приклонить голову</strong><small>Проживание</small></div><b class="category-total" data-total="stay">0,00 €</b></div>
+              <div class="mode-switch" role="group" aria-label="Способ ввода расходов на проживание"><button type="button" class="mode-btn active" data-mode="quick">Быстро</button><button type="button" class="mode-btn" data-mode="detail">По пунктам</button></div><p class="mode-status" aria-live="polite"></p>
+              <div class="quick-entry"><label>Общая сумма <span class="money-input"><input type="number" min="0" step="0.01" inputmode="decimal" data-quick="stay" placeholder="0,00"><b>€</b></span></label></div>
+              <div class="detail-entry" hidden><div class="item-list" data-list="stay"></div><form class="add-item-form" data-add="stay"><input type="text" maxlength="180" placeholder="Например, Отель" aria-label="Название расхода"><input type="number" step="0.01" inputmode="decimal" placeholder="Сумма €" aria-label="Сумма расхода"><button type="submit" aria-label="Добавить расход">+</button></form><p class="detail-total">Итого по пунктам: <strong data-detail-total="stay">0,00 €</strong></p></div>
+            </section>
+            <section class="cost-card" data-category="food" style="--cat:#d7a52d">
+              <div class="category-head"><span class="cost-icon">♨</span><div class="cost-copy"><strong>Вкус жизни и кофеёк</strong><small>Питание</small></div><b class="category-total" data-total="food">0,00 €</b></div>
+              <div class="mode-switch" role="group" aria-label="Способ ввода расходов на питание"><button type="button" class="mode-btn active" data-mode="quick">Быстро</button><button type="button" class="mode-btn" data-mode="detail">По пунктам</button></div><p class="mode-status" aria-live="polite"></p>
+              <div class="quick-entry"><label>Общая сумма <span class="money-input"><input type="number" min="0" step="0.01" inputmode="decimal" data-quick="food" placeholder="0,00"><b>€</b></span></label></div>
+              <div class="detail-entry" hidden><div class="item-list" data-list="food"></div><form class="add-item-form" data-add="food"><input type="text" maxlength="180" placeholder="Например, Завтраки" aria-label="Название расхода"><input type="number" step="0.01" inputmode="decimal" placeholder="Сумма €" aria-label="Сумма расхода"><button type="submit" aria-label="Добавить расход">+</button></form><p class="detail-total">Итого по пунктам: <strong data-detail-total="food">0,00 €</strong></p></div>
+            </section>
+            <section class="cost-card" data-category="fun" style="--cat:#6f75bb">
+              <div class="category-head"><span class="cost-icon">✳</span><div class="cost-copy"><strong>Впечатления на всю жизнь</strong><small>Развлечения и экскурсии</small></div><b class="category-total" data-total="fun">0,00 €</b></div>
+              <div class="mode-switch" role="group" aria-label="Способ ввода расходов на развлечения"><button type="button" class="mode-btn active" data-mode="quick">Быстро</button><button type="button" class="mode-btn" data-mode="detail">По пунктам</button></div><p class="mode-status" aria-live="polite"></p>
+              <div class="quick-entry"><label>Общая сумма <span class="money-input"><input type="number" min="0" step="0.01" inputmode="decimal" data-quick="fun" placeholder="0,00"><b>€</b></span></label></div>
+              <div class="detail-entry" hidden><div class="item-list" data-list="fun"></div><form class="add-item-form" data-add="fun"><input type="text" maxlength="180" placeholder="Например, Музей" aria-label="Название расхода"><input type="number" step="0.01" inputmode="decimal" placeholder="Сумма €" aria-label="Сумма расхода"><button type="submit" aria-label="Добавить расход">+</button></form><p class="detail-total">Итого по пунктам: <strong data-detail-total="fun">0,00 €</strong></p></div>
+            </section>
+            <section class="cost-card" data-category="other" style="--cat:#a99b82">
+              <div class="category-head"><span class="cost-icon">＋</span><div class="cost-copy"><strong>Мелочи, без которых никак</strong><small>Прочее</small></div><b class="category-total" data-total="other">0,00 €</b></div>
+              <div class="mode-switch" role="group" aria-label="Способ ввода прочих расходов"><button type="button" class="mode-btn active" data-mode="quick">Быстро</button><button type="button" class="mode-btn" data-mode="detail">По пунктам</button></div><p class="mode-status" aria-live="polite"></p>
+              <div class="quick-entry"><label>Общая сумма <span class="money-input"><input type="number" min="0" step="0.01" inputmode="decimal" data-quick="other" placeholder="0,00"><b>€</b></span></label></div>
+              <div class="detail-entry" hidden><div class="item-list" data-list="other"></div><form class="add-item-form" data-add="other"><input type="text" maxlength="180" placeholder="Например, Сувениры" aria-label="Название расхода"><input type="number" step="0.01" inputmode="decimal" placeholder="Сумма €" aria-label="Сумма расхода"><button type="submit" aria-label="Добавить расход">+</button></form><p class="detail-total">Итого по пунктам: <strong data-detail-total="other">0,00 €</strong></p></div>
+            </section>
+          </div>
+          <div class="form-footer"><p><span class="asterisk">✳</span> Возвраты и скидки можно записать отрицательной суммой в подробном режиме.</p><button class="calculate-btn" id="calculate-button" type="button">Рассчитать бюджет <span aria-hidden="true">↗</span></button></div>
+          <p id="form-error" class="form-error" role="alert" aria-live="polite"></p>
+        </form>
+
+        <section class="results" id="results" aria-live="polite" aria-label="Результаты расчёта">
+          <div class="results-top"><div><p class="eyebrow">03 / ИТОГО ПО ПЛАНУ</p><h2>Вот сколько стоит<br>это приключение</h2></div><span class="receipt-mark">€</span></div>
+          <div class="total-card"><div class="total-label">ОБЩИЙ БЮДЖЕТ ПОЕЗДКИ</div><div class="total-value" id="total">0,00 <span>€</span></div><div class="total-foot"><span class="status-dot"></span><span id="trip-summary">2 путешественника · 7 дней · 6 ночей</span></div></div>
+          <div class="stats-grid"><div class="stat-card"><span class="stat-icon">☺</span><span class="stat-label">На одного человека</span><strong id="per-person">0,00 €</strong></div><div class="stat-card"><span class="stat-icon">◷</span><span class="stat-label">В среднем за день</span><strong id="per-day">0,00 €</strong></div></div>
+          <div class="chart-card"><div class="chart-heading"><div><p class="eyebrow">КУДА УЛЕТАЮТ ЕВРО</p><h3>Структура расходов</h3></div><span class="chart-note">доли от общего</span></div><div class="chart-content"><div class="donut" id="donut" role="img" aria-label="Диаграмма распределения расходов"><div class="donut-hole"><strong id="chart-total">0,00 €</strong><span>ВСЕГО</span></div></div><ul class="legend" id="legend"></ul></div></div>
+          <div class="game-message" id="game-message" hidden><span class="game-star">✳</span><p id="game-message-text"></p></div>
+          <div class="export-actions" id="export-actions" hidden><button class="export-btn" id="pdf-button" type="button">▤ Сохранить PDF</button><button class="export-btn secondary" id="png-button" type="button">▧ Скачать PNG</button></div>
+          <p class="result-note"><span>✳</span> Цифры посчитаны. Осталось собрать вещи и не забыть паспорт.</p>
+        </section>
+      </section>
+    </main>
+    <footer><span>ДЕНЬГИ НА ВЕТЕР © 2026</span><span>СМЕЛЕЕ МЕЧТАЙ. УМНЕЕ СЧИТАЙ. ↗</span></footer>
+  </div>
+  <section class="receipt-print" id="receipt-print" aria-label="Чек путешественника"></section>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
