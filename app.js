@@ -137,15 +137,18 @@
   function gameMessage(total, perPerson, perDay, trip, costs) {
     const allZero = costs.every(category => category.amount === 0);
     const hasNegative = costs.some(category => category.amount < 0);
+    const perPersonPerDay = perPerson / trip.days;
+
     if (allZero) return "Бесплатное приключение? Ты точно знаешь какой-то секрет!";
     if (hasNegative) return "Возвраты учтены — вот это финансовая смекалка путешественника!";
-    if (costs.every(category => category.amount > 0)) return "Отлично! Все монетки посчитаны. Можно отправляться в путь!";
-    if (perDay < 20) return "Лёгкий багаж для кошелька. Пусть приключения будут щедрыми на впечатления!";
-    if (perDay < 100) return "План выглядит бодро: бюджет при деле, а приключения уже маячат на горизонте.";
-    if (perDay < 300) return "План с размахом! Проверь, всё ли учтено, и можно паковать чемодан.";
-    if (perDay >= 300) return "Ого, маршрут с размахом! Кажется, приключение готовит немало красивых моментов.";
-    return "Все цифры на месте. Ветер попутный — пора строить маршрут!";
-  }
+
+    if (perPersonPerDay < 20) return "Лёгкий багаж для кошелька. Пусть приключения будут щедрыми на впечатления!";
+    if (perPersonPerDay < 100) return "План выглядит бодро: бюджет при деле, а приключения уже маячат на горизонте.";
+    if (perPersonPerDay < 300) return "План с размахом! Проверь, всё ли учтено, и можно паковать чемодан.";
+    if (perPersonPerDay >= 300) return "Ого, маршрут с размахом! Кажется, приключение готовит немало красивых моментов.";
+
+  return "Все цифры на месте. Ветер попутный — пора строить маршрут!";
+}
 
   function calculate(event) {
     event?.preventDefault();
