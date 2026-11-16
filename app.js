@@ -12,6 +12,7 @@
   const state = Object.fromEntries(categories.map(({ key }) => [key, { mode: "quick", quick: "", items: [] }]));
   let lastCalculation = null;
   let toastTimer;
+  let nightsEditedManually = false;
 
   const money = value => new Intl.NumberFormat("ru-RU", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value);
   const euro = value => `${money(value)} €`;
@@ -283,7 +284,21 @@
   form.addEventListener("input", event => {
     const quickInput = event.target.closest("[data-quick]");
     if (quickInput) { state[quickInput.dataset.quick].quick = quickInput.value; renderCategory(quickInput.dataset.quick); calculate(); }
-    if (["people", "days", "nights"].includes(event.target.id)) { event.target.removeAttribute("aria-invalid"); if (event.target.value.trim() !== "") calculate(); }
+    if (event.target.id === "nights") {
+  nightsEditedManually = true;
+}
+
+if (event.target.id === "days" && !nightsEditedManually) {
+  const days = Number(event.target.value);
+  if (Number.isInteger(days) && days > 0 && days <= 3650) {
+    $("#nights").value = String(Math.max(0, days - 1));
+  }
+}
+
+if (["people", "days", "nights"].includes(event.target.id)) {
+  event.target.removeAttribute("aria-invalid");
+  if (event.target.value.trim() !== "") calculate();
+}
   });
 
 
