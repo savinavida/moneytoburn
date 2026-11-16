@@ -262,6 +262,7 @@
   function resetAll() {
     if (!window.confirm("Сбросить всё приключение? Введённые данные и позиции расходов исчезнут.")) return;
     $("#people").value = "2"; $("#days").value = "7"; $("#nights").value = "6";
+    nightsEditedManually = false;
     $("#trip-name").value = "";
     for (const { key } of categories) state[key] = { mode: "quick", quick: "", items: [] };
     lastCalculation = null; clearErrors(); renderAllCategories();
