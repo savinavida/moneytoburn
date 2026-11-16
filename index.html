@@ -36,8 +36,8 @@
           <label class="trip-name-field"><span>Как назовём приключение? <small>необязательно</small></span><input id="trip-name" type="text" maxlength="80" placeholder="Например, Большой побег в Рим"></label>
           <div class="trip-grid">
             <label class="field"><span class="field-label">Путешественников</span><span class="input-wrap"><input name="people" id="people" type="number" min="1" max="10000" step="1" value="2" required><span class="unit">чел.</span></span><small class="field-error" data-error="people"></small></label>
-            <label class="field"><span class="field-label">Дней в пути</span><span class="input-wrap"><input name="days" id="days" type="number" min="1" max="3650" step="1" value="7" required><span class="unit">дней</span></span><small class="field-error" data-error="days"></small></label>
-            <label class="field"><span class="field-label">Ночей</span><span class="input-wrap"><input name="nights" id="nights" type="number" min="0" max="3650" step="1" value="6"><span class="unit">ночей</span></span><small class="field-error" data-error="nights"></small></label>
+            <label class="field"><span class="field-label">Дней</span><span class="input-wrap"><input name="days" id="days" type="number" min="1" max="3650" step="1" value="7" required><span class="unit">дней</span></span><small class="field-error" data-error="days"></small></label>
+            <label class="field"><span class="field-label">Ночевок</span><span class="input-wrap"><input name="nights" id="nights" type="number" min="0" max="3650" step="1" value="6"><span class="unit">ночей</span></span><small class="field-error" data-error="nights"></small></label>
           </div>
 
           <div class="section-heading costs-heading"><div><p class="eyebrow">02 / ДЕНЬГИ-ДЕНЬЖАТА</p><h2>На что улетит бюджет?</h2><p class="section-hint">Все суммы — за всю поездку и всю компанию. Выбирай удобный способ учёта.</p></div><span class="currency-tag">ВСЁ В EUR €</span></div>
@@ -78,7 +78,7 @@
         </div>
 
         <section class="results" id="results" aria-live="polite" aria-label="Результаты расчёта">
-          <div class="results-top"><div><p class="eyebrow">03 / ИГОГО-ИТОГО ПО ПЛАНУ</p><h2>Вот сколько стоит<br>это приключение</h2></div><span class="receipt-mark">€</span></div>
+          <div class="results-top"><div><p class="eyebrow">03 / ИГОТО ИГОГО ПО ПЛАНУ</p><h2>Вот сколько стоит<br>это приключение</h2></div><span class="receipt-mark">€</span></div>
           <div class="total-card"><div class="total-label">ОБЩИЙ БЮДЖЕТ ПОЕЗДОЧКИ</div><div class="total-value" id="total">0,00 <span>€</span></div><div class="total-foot"><span class="status-dot"></span><span id="trip-summary">2 путешественника · 7 дней · 6 ночей</span></div></div>
           <div class="stats-grid"><div class="stat-card"><span class="stat-icon">☺</span><span class="stat-label">На одного человека</span><strong id="per-person">0,00 €</strong></div><div class="stat-card"><span class="stat-icon">◷</span><span class="stat-label">В среднем за день</span><strong id="per-day">0,00 €</strong></div></div>
           <div class="chart-card"><div class="chart-heading"><div><p class="eyebrow">КУДА УЛЕТАЮТ ЕВРО</p><h3>Структура расходов</h3></div><span class="chart-note">доли от общего</span></div><div class="chart-content"><div class="donut" id="donut" role="img" aria-label="Диаграмма распределения расходов"><div class="donut-hole"><strong id="chart-total">0,00 €</strong><span>ВСЕГО</span></div></div><ul class="legend" id="legend"></ul></div></div>
